@@ -4,8 +4,9 @@
 //Student #: A01353908
 
 #include <iostream>
+using namespace std;
 
 int main() {
-    std::cout << "Assignment 2, Hello, World!" << std::endl;
+    cout << "Assignment 2, Hello, World!" << std::endl;
     return 0;
 }

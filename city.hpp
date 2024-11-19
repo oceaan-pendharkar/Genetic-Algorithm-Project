@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 /**
  * A city has x and y coordinates to indicate its position relative to other cities.
@@ -12,17 +13,23 @@ class city {
     double y;
 
     /**
+     * Name: the name of the city
+     */
+    std::string name;
+
+    /**
      * Constructor
      * @param x position on x-axis (i.e. longitude) of city, an int
      * @param y position on y-axis (i.e. latitude) of city, an int
+     * @param name the name of the city, a string
      */
-    city(const double x, const double y):x(x), y(y){}
+    city(const double x, const double y, const std::string& name):x(x), y(y), name(name){}
 
     /**
      * Get Distance Between Cities
      *
      * Gets the distance between 2 cities using the pythagorean distance formula d = sqrt((x2-x1)^2 + (yz-y1)^2)
-     * 
+     *
      * @param a a city
      * @param b another city
      * @return the distance between the two cities
