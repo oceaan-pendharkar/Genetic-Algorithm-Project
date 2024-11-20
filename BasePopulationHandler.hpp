@@ -23,8 +23,8 @@ class BasePopulationHandler {
     /*
         Each handler can invoke another handler at the end of it's
         processing of the form. This handler needs to implement the
-        BaseSchoolFormHandler interface.
-        :param handler: a BaseSchoolFormHandler
+        BasePopulationHandler interface.
+        :param handler: a BasePopulationHandler
      */
     void set_handler(BasePopulationHandler *handler) { next_handler = handler;}
 };
