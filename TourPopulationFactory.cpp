@@ -38,15 +38,16 @@ std::vector<tour*> TourPopulationFactory::createPopulation() const {
         string name = to_string(counter++);
         const double x = generate_coordinate();
         const double y = generate_coordinate();
-        cities[i] = new city(x, y, name);
+        cities.push_back(new city(x, y, name));
     }
 
     const auto t = new tour(cities);
-    vector<tour*> tours;
     // create a list of tours based on this one tour that contains our cities
-    for (int i=0; i<population_size; i++) {
+    vector<tour*> tours;
+    tours.reserve(population_size);
+for (int i=0; i<population_size; i++) {
         // our tour copy constructor shuffles the original order
-        tours[i] = new tour(*t);
+        tours.push_back(new tour(*t));
     }
 
     //sort the tours in increasing level of fitness

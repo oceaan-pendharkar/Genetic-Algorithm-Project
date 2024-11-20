@@ -9,6 +9,6 @@
 using namespace std;
 
 int main() {
-    cout << "Assignment 2, Hello, World!" << std::endl;
+    SingletonFacade::run();
     return 0;
 }

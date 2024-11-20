@@ -10,4 +10,5 @@ add_executable(assignment2template main.cpp city.hpp tour.hpp
         SingletonFacade.hpp
         SingletonFacade.cpp
         TourPopulationFactory.hpp
-        TourPopulationFactory.cpp)
+        TourPopulationFactory.cpp
+        TourPopulationManipulator.hpp)

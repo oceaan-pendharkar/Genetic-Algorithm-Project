@@ -1,4 +1,3 @@
-#pragma once
 #include "tour.hpp"
 
 double tour::get_tour_distance() const {

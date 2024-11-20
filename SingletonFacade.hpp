@@ -31,5 +31,5 @@ public:
      *
      * This function will manage the complexity of running our genetic algorithm.
      */
-    void run();
+    static void run();
 };

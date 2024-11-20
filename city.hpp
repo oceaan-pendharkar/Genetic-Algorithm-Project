@@ -24,7 +24,7 @@ public:
      * @param y position on y-axis (i.e. latitude) of city, an int
      * @param name the name of the city, a string
      */
-    city(const double x, const double y, const std::string& name):x(x), y(y), name(name){}
+    city(const double x, const double y, std::string& name):x(x), y(y), name(name){}
 
     /**
      * Get Distance Between Cities

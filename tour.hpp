@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include <vector>
 
 #include "city.hpp"
@@ -32,7 +33,9 @@ public:
      * @param t the tour to copy into this one
      */
     tour(const tour& t):tour(t.cities) {
-     std::shuffle(cities.begin(), cities.end(), cities);
+     std::random_device rd;                // Seed the random number generator
+     std::mt19937 gen(rd());
+     std::ranges::shuffle(cities, gen);
     }
 
     /**
