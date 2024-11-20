@@ -13,4 +13,12 @@ add_executable(assignment2template
         SingletonFacade.hpp
         SingletonFacade.cpp
         TourPopulationFactory.hpp
-        TourPopulationFactory.cpp)
+        TourPopulationFactory.cpp
+        BasePopulationHandler.cpp
+        BasePopulationHandler.hpp
+        CrossoverHandler.cpp
+        CrossoverHandler.hpp
+        MutationHandler.cpp
+        MutationHandler.hpp
+        EvaluationHandler.cpp
+        EvaluationHandler.hpp)
