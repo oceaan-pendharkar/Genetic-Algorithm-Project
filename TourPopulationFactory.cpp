@@ -50,7 +50,7 @@ for (int i=0; i<population_size; i++) {
         tours.push_back(new tour(*t));
     }
 
-    //sort the tours in increasing level of fitness
+    //sort the tours in decreasing level of fitness
     ranges::sort(tours, [](const tour*a, const tour* b) {
         return a->get_tour_fitness() < b->get_tour_fitness();
     });
