@@ -4,6 +4,8 @@
 //Student #: A01353908
 
 #include <iostream>
+#include "SingletonFacade.hpp"
+
 using namespace std;
 
 int main() {

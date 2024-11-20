@@ -7,4 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(assignment2template main.cpp city.hpp tour.hpp
         city.cpp
         tour.cpp
-        SingletonFacade.hpp)
+        SingletonFacade.hpp
+        SingletonFacade.cpp
+        TourPopulationFactory.hpp
+        TourPopulationFactory.cpp)

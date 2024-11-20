@@ -23,8 +23,7 @@ double generate_coordinate() {
     return dist(gen);
 }
 
-TourPopulationFactory::TourPopulationFactory(tour *t) {
-    this->t = t;
+TourPopulationFactory::TourPopulationFactory() {
     cout << "How many cities would you like to include in your population?" << endl;
     cin >> this->cities_in_tour;
     cout << "How big should the population be?" << endl;

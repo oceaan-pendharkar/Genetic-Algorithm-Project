@@ -9,16 +9,16 @@
  * The calling class will be responsible for deallocating the memory allocated within the createPopulation method.
  */
 class TourPopulationFactory {
-    tour* t;
     int cities_in_tour{};
     int population_size{};
 
+public:
     /**
      * Constructor
      *
      * Will allow the user to assign the number of cities, the population size
      */
-    explicit TourPopulationFactory(tour * t);
+    TourPopulationFactory();
 
     /**
      * Create Population
