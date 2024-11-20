@@ -1,5 +1,5 @@
 #pragma once
-#include "tour.hpp"
+#include "Tour.hpp"
 
 /**
  * The Tour Population Factory is responsible for creating a population of tours.
@@ -27,5 +27,5 @@ public:
      *
      * @return a population of tours sorted in increasing level of fitness, as a vector of pointers to tour
      */
-    std::vector<tour*> createPopulation() const;
+    std::vector<Tour*> createPopulation() const;
 };

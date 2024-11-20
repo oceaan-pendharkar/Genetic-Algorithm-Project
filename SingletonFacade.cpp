@@ -11,9 +11,9 @@ constexpr double IMPROVEMENT_FACTOR = 0.05;
 void SingletonFacade::run() {
     //initialize population
     const auto * factory = new TourPopulationFactory{};
-    const std::vector<tour*> tours = factory->createPopulation();
+    const std::vector<Tour*> tours = factory->createPopulation();
 
-    tour * elite = tours[FIRST];
+    Tour * elite = tours[FIRST];
     double base_distance = elite->get_tour_distance();
     double best_distance = base_distance;
 

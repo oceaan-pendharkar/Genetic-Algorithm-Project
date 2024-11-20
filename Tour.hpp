@@ -1,8 +1,10 @@
 #pragma once
 #include <random>
 #include <vector>
+#include <algorithm>
 
 #include "city.hpp"
+
 
 /**
  * A tour has a list of cities.
@@ -12,11 +14,11 @@
  *
  * Cities are visited in the order they are arranged in the tour.
  */
-class tour {
+class Tour {
  /**
   * Cities: our list of cities in the tour
   */
- std::vector<city*> cities;
+ std::vector<City*> cities;
 
 public:
  /**
@@ -24,7 +26,7 @@ public:
   * Initializes a shuffled order of the passed-in cities
   * @param cities the vector of cities in a tour
   */
- explicit tour(const std::vector<city*> &cities):cities(cities) {}
+ explicit Tour(const std::vector<City*> &cities):cities(cities) {}
 
  /**
   * Copy constructor
@@ -32,17 +34,17 @@ public:
   *
   * @param t the tour to copy into this one
   */
- tour(const tour& t):tour(t.cities) {
+ Tour(const Tour& t):Tour(t.cities) {
   std::random_device rd;                // Seed the random number generator
   std::mt19937 gen(rd());
-  std::ranges::shuffle(cities, gen);
+  std::shuffle(std::begin(cities), std::end(cities), gen);
  }
 
  /**
   * Get Cities: gets the cities
   * @return the vector of pointers to city within this tour
   */
- std::vector<city*> get_cities() {
+ std::vector<City*> get_cities() {
   return cities;
  }
 

@@ -4,7 +4,7 @@
 /**
  * A city has x and y coordinates to indicate its position relative to other cities.
  */
-class city {
+class City {
     /**
      * Coordinates: x  (longitude) and y (latitude)
      * x and y must be within the range [0, 1000] inclusive
@@ -24,7 +24,7 @@ public:
      * @param y position on y-axis (i.e. latitude) of city, an int
      * @param name the name of the city, a string
      */
-    city(const double x, const double y, std::string& name):x(x), y(y), name(name){}
+    City(const double x, const double y, std::string& name):x(x), y(y), name(name){}
 
     /**
      * Get Distance Between Cities
@@ -35,5 +35,5 @@ public:
      * @param b another city
      * @return the distance between the two cities
      */
-    friend double get_distance_between_cities(const city * a, const city * b);
+    friend double get_distance_between_cities(const City * a, const City * b);
 };

@@ -30,28 +30,28 @@ TourPopulationFactory::TourPopulationFactory() {
     cin >> this->population_size;
 }
 
-std::vector<tour*> TourPopulationFactory::createPopulation() const {
-    vector<city*> cities;
+std::vector<Tour*> TourPopulationFactory::createPopulation() const {
+    vector<City*> cities;
     int counter = 0;
     // create a list of cities with ids and randomly generated coordinates within our range
     for(int i=0; i<cities_in_tour; i++) {
         string name = to_string(counter++);
         const double x = generate_coordinate();
         const double y = generate_coordinate();
-        cities.push_back(new city(x, y, name));
+        cities.push_back(new City(x, y, name));
     }
 
-    const auto t = new tour(cities);
+    const auto t = new Tour(cities);
     // create a list of tours based on this one tour that contains our cities
-    vector<tour*> tours;
+    vector<Tour*> tours;
     tours.reserve(population_size);
     for (int i=0; i<population_size; i++) {
         // our tour copy constructor shuffles the original order
-        tours.push_back(new tour(*t));
+        tours.push_back(new Tour(*t));
     }
 
     //sort the tours in decreasing level of fitness
-    ranges::sort(tours, [](const tour*a, const tour* b) {
+    ranges::sort(tours, [](const Tour*a, const Tour* b) {
         return a->get_tour_fitness() < b->get_tour_fitness();
     });
 
