@@ -40,4 +40,6 @@ void SingletonFacade::run() {
     for (const auto & tour : tours) {
         delete tour;
     }
+
+    delete factory;
 }

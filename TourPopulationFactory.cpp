@@ -55,6 +55,7 @@ std::vector<tour*> TourPopulationFactory::createPopulation() const {
         return a->get_tour_fitness() < b->get_tour_fitness();
     });
 
+    delete t;
     return tours;
 }
 
