@@ -45,7 +45,7 @@ std::vector<tour*> TourPopulationFactory::createPopulation() const {
     // create a list of tours based on this one tour that contains our cities
     vector<tour*> tours;
     tours.reserve(population_size);
-for (int i=0; i<population_size; i++) {
+    for (int i=0; i<population_size; i++) {
         // our tour copy constructor shuffles the original order
         tours.push_back(new tour(*t));
     }

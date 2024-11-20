@@ -32,6 +32,12 @@ void SingletonFacade::run() {
          best_distance = base_distance / IMPROVEMENT_FACTOR;
      }
 
-    // We only need to delete one tour because all the tours contain pointers to the same city. We can discuss.
-    delete tours[FIRST];
+    //delete all the cities: only needs to be done on one tour because all the tours point to the same set of cities
+    for (const auto & city : tours[FIRST]->get_cities()) {
+        delete city;
+    }
+    //delete all the pointers to tours
+    for (const auto & tour : tours) {
+        delete tour;
+    }
 }

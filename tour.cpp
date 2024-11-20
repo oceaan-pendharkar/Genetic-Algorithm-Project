@@ -13,9 +13,3 @@ double tour::get_tour_fitness() const {
     const double distance = get_tour_distance();
     return SCALAR/distance;
 }
-
-tour::~tour() {
-    for(const auto & city : cities) {
-        delete city;
-    }
-}
