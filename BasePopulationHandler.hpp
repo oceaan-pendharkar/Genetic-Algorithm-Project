@@ -5,10 +5,11 @@
 #include "Tour.hpp"
 
 class BasePopulationHandler {
-    BasePopulationHandler *next_handler = nullptr;
+public:
+    BasePopulationHandler * next_handler = nullptr;
 
     BasePopulationHandler() = default;
-    BasePopulationHandler(BasePopulationHandler *handler) : next_handler(handler) {}
+    BasePopulationHandler(BasePopulationHandler * handler) : next_handler(handler) {}
 
     /*
         Each handler would have a specific implementation of how it
@@ -18,7 +19,7 @@ class BasePopulationHandler {
         outcome and the reason, and the second a bool indicating
         successful handling of the form or not.
      */
-    virtual std::pair<std::string,bool> handle_population(std::vector<Tour*> population) {};
+    virtual std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) {};
 
     /*
         Each handler can invoke another handler at the end of it's
@@ -26,5 +27,5 @@ class BasePopulationHandler {
         BasePopulationHandler interface.
         :param handler: a BasePopulationHandler
      */
-    void set_handler(BasePopulationHandler *handler) { next_handler = handler;}
+    void set_handler(BasePopulationHandler * handler) { next_handler = handler;}
 };
