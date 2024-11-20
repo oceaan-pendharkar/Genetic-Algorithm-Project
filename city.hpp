@@ -17,6 +17,7 @@ class city {
      */
     std::string name;
 
+public:
     /**
      * Constructor
      * @param x position on x-axis (i.e. longitude) of city, an int
@@ -34,5 +35,5 @@ class city {
      * @param b another city
      * @return the distance between the two cities
      */
-    friend double get_distance_between_cities(city a, city b);
+    friend double get_distance_between_cities(const city * a, const city * b);
 };

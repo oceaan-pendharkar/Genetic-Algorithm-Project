@@ -8,3 +8,15 @@ double tour::get_tour_distance() const {
     }
     return total_distance;
 }
+
+double tour::get_tour_fitness() const {
+    constexpr double SCALAR = 1000;
+    const double distance = get_tour_distance();
+    return SCALAR/distance;
+}
+
+tour::~tour() {
+    for(const auto & city : cities) {
+        delete city;
+    }
+}
