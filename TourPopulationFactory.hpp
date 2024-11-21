@@ -13,9 +13,8 @@ class TourPopulationFactory {
     int population_size{};
 
 public:
-    [[nodiscard]] int get_population_size() const {
-        return population_size;
-    }
+    [[nodiscard]] int get_number_of_cities() const { return cities_in_tour; }
+    [[nodiscard]] int get_population_size() const { return population_size; }
 
     /**
      * Constructor

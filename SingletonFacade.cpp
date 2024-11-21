@@ -17,9 +17,9 @@ void SingletonFacade::run() {
     double const base_distance = elite->get_tour_distance();
     double best_distance = base_distance;
 
-    for(const auto & tour : tours) {
-        std::cout << "distance: " << tour->get_tour_distance() << " | fitness: " << tour->get_tour_fitness() << std::endl;
-    }
+    // for(const auto & tour : tours) {
+    //     std::cout << "distance: " << tour->get_tour_distance() << " | fitness: " << tour->get_tour_fitness() << std::endl;
+    // }
 
     // Print the original Elite data
     std::cout << "Original Elite Distance: " << elite->get_tour_distance() << std::endl;
