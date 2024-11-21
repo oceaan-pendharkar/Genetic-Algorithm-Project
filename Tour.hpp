@@ -2,6 +2,7 @@
 #include <random>
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 #include "city.hpp"
 
@@ -36,7 +37,7 @@ public:
   * @param t the tour to copy into this one
   */
  Tour(const Tour& t):Tour(t.cities) {
-  std::random_device rd;                // Seed the random number generator
+  std::random_device rd;
   std::mt19937 gen(rd());
   std::shuffle(std::begin(cities), std::end(cities), gen);
  }

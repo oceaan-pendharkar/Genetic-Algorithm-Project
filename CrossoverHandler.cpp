@@ -9,11 +9,43 @@ const int CrossoverHandler::NUMBER_OF_PARENTS = 2;
 
 std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tour *> * population) {
 
+    std::cout << "Test: At Start of Crossover, size is population is: " << population->size() << std::endl;
+    for (const auto &tour : *population) {
+        if (!tour) {
+            std::cout << "Error: Found a null pointer in population!" << std::endl;
+            continue;
+        }
+        std::cout << "distance: " << tour->get_tour_distance()
+                  << " | fitness: " << tour->get_tour_fitness()
+                  << std::endl;
+    }
+
+    std::cout << std::endl;
+
     //Create a temporary container to hold the new values
     std::vector<Tour *> temp;
 
     //Keep the previous elite
-    temp.push_back((*population)[0]);
+    if (population->empty() || !(*population)[0]) {
+        throw std::logic_error("Population is empty or the first element is null");
+    }
+
+    // **For testing**
+    std::cout << "Elite Tour - Distance: " << (*population)[0]->get_tour_distance()
+              << " | Fitness: " << (*population)[0]->get_tour_fitness() << std::endl;
+
+    temp.push_back(new Tour(*(*population)[0]));
+
+    std::cout << "Test: Temp Test A, size is population is: " << temp.size() << std::endl;
+    for (const auto &tour : temp) {
+        if (!tour) {
+            std::cout << "Error: Found a null pointer in population!" << std::endl;
+            continue;
+        }
+        std::cout << "distance: " << tour->get_tour_distance()
+                  << " | fitness: " << tour->get_tour_fitness()
+                  << std::endl;
+    }
 
     //Set up number of loops required to fill new vector
     const std::size_t population_size = population->size();
@@ -83,7 +115,6 @@ std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tou
         std::vector<City *> empty;
         child = new Tour(empty);
 
-
         //Push cities from Parent One up to the index
         for (int i = 0; i < cross_index; i++) {
             child->push_city(parent_one_cities[i]);
@@ -97,6 +128,16 @@ std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tou
         temp.push_back(child);
     }
 
+    std::cout << "Test: Temp Test B, size is population is: " << temp.size() << std::endl;
+    for (const auto &tour : temp) {
+        if (!tour) {
+            std::cout << "Error: Found a null pointer in population!" << std::endl;
+            continue;
+        }
+        std::cout << "distance: " << tour->get_tour_distance()
+                  << " | fitness: " << tour->get_tour_fitness()
+                  << std::endl;
+    }
 
     //Delete previous values
     for (Tour* tour : *population) {
@@ -106,6 +147,18 @@ std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tou
 
     // Replace contents with temp vector
     *population = std::move(temp);
+
+    std::cout << "Test: At End of Crossover, size is population is: " << population->size() << std::endl;
+    for (const auto &tour : *population) {
+        if (!tour) { // Null pointer check
+            std::cout << "Error: Found a null pointer in population!" << std::endl;
+            continue;
+        }
+        std::cout << "distance: " << tour->get_tour_distance()
+                  << " | fitness: " << tour->get_tour_fitness()
+                  << std::endl;
+    }
+    std::cout << std::endl;
 
     //if no more handlers exist, return with success message
     if (!next_handler) {
