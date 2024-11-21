@@ -1,5 +1,7 @@
 #include "Tour.hpp"
 
+const double Tour::SCALAR = 1000;
+
 double Tour::get_tour_distance() const {
     double total_distance = 0.0;
     for (size_t i=0; i<cities.size() - 1; i++) {
@@ -9,7 +11,6 @@ double Tour::get_tour_distance() const {
 }
 
 double Tour::get_tour_fitness() const {
-    constexpr double SCALAR = 1000;
     const double distance = get_tour_distance();
     return SCALAR/distance;
 }

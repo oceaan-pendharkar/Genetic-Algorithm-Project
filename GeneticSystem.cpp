@@ -7,10 +7,9 @@ bool GeneticSystem::iterate_next(std::vector<Tour*> & population) {
     result = chain_head->handle_population(&population);
 
     if(result.second == true) {
-        std::cout << "Test: Genetic System passed Handlers successfully" << std::endl;
         return true;
     }
 
-    std::cout << "Test: Genetic System failed" << std::endl;
+    std::cout << "Genetic System failed" << std::endl;
     return false;
 }

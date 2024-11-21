@@ -13,6 +13,10 @@ class TourPopulationFactory {
     int population_size{};
 
 public:
+    [[nodiscard]] int get_population_size() const {
+        return population_size;
+    }
+
     /**
      * Constructor
      *

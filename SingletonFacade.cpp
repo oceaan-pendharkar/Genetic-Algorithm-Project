@@ -18,12 +18,12 @@ void SingletonFacade::run() {
     double best_distance = base_distance;
 
     for(const auto & tour : tours) {
-        std::cout << "fitness: " << tour->get_tour_distance() << " | distance: " << tour->get_tour_fitness() << std::endl;
+        std::cout << "distance: " << tour->get_tour_distance() << " | fitness: " << tour->get_tour_fitness() << std::endl;
     }
 
     // Print the original Elite data
-    std::cout << "Original Elite Distance: " << elite << std::endl;
-    //TODO: print statement for original elite city sequence
+    std::cout << "Original Elite Distance: " << elite->get_tour_distance() << std::endl;
+    std::cout << "(TO DO: Print sequence of cities for original elite)" << std::endl;
     std::cout << "--- STARTING ALGORITHM ---" << std::endl;
 
     // Sets up the variables for the Genetic Algorithm
@@ -77,5 +77,5 @@ void SingletonFacade::print_iteration(std::vector<Tour*> & population, const int
     if (!new_elite_found) {
         std::cout << "Best non-elite distance: " << population[FIRST]->get_tour_distance() << std::endl;
     }
-    std::cout << "Improvement over base: " << improvement_factor << std::endl;
+    std::cout << "Improvement over base: " << improvement_factor << std::endl << std::endl;
 }

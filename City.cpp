@@ -2,7 +2,9 @@
 
 #include <cmath>
 
+const int City::TWO = 2;
+
 double get_distance_between_cities(const City * a, const City * b) {
-    constexpr int power = 2;
+    int power = City::TWO;
     return sqrt(pow(b->x - a->x, power) + pow(b->y - a->y, power));
 }

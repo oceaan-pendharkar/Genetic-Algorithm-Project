@@ -5,6 +5,8 @@
  * A city has x and y coordinates to indicate its position relative to other cities.
  */
 class City {
+    static const int TWO;
+
     /**
      * Coordinates: x  (longitude) and y (latitude)
      * x and y must be within the range [0, 1000] inclusive

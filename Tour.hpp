@@ -15,6 +15,7 @@
  * Cities are visited in the order they are arranged in the tour.
  */
 class Tour {
+ static const double SCALAR;
  /**
   * Cities: our list of cities in the tour
   */
@@ -44,9 +45,11 @@ public:
   * Get Cities: gets the cities
   * @return the vector of pointers to city within this tour
   */
- std::vector<City*> get_cities() {
-  return cities;
- }
+ std::vector<City*> get_cities() { return cities; }
+
+ size_t get_number_of_cities() { return cities.size(); }
+
+ void push_city(City * new_city) { cities.push_back(new_city); }
 
  /**
   * Get Tour Distance

@@ -4,6 +4,12 @@
 #include "BasePopulationHandler.hpp"
 
 class CrossoverHandler : public BasePopulationHandler {
+
+    static const int ONE;
+    static const int TWO;
+    static const int PARENT_POOL_SIZE;
+    static const int NUMBER_OF_PARENTS;
+
 public:
     /*
         Creates two sets of "Parent" tours and crosses them to generate new tours

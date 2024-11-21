@@ -6,6 +6,7 @@ using namespace std;
 
 constexpr double ZERO = 0;
 constexpr double MAP_BOUNDARY = 1000;
+constexpr int MINIMUM_SIZE = 10;
 
 /**
  * Initializing the random device outside the function scope to avoid issues
@@ -24,10 +25,18 @@ double generate_coordinate() {
 }
 
 TourPopulationFactory::TourPopulationFactory() {
-    cout << "How many cities would you like to include in your population?" << endl;
+    cout << "How many cities would you like to include in your population? (Minimum size: 10)" << endl;
     cin >> this->cities_in_tour;
-    cout << "How big should the population be?" << endl;
+    if (cities_in_tour < MINIMUM_SIZE) {
+        cout << "That number is too small. Please enter a number 10 or greater." << endl;
+        cin >> this->cities_in_tour;
+    }
+    cout << "How many cities should we visit? (Minimum size: 10)" << endl;
     cin >> this->population_size;
+    if (population_size < MINIMUM_SIZE) {
+        cout << "That number is too small. Please enter a number 10 or greater." << endl;
+        cin >> this->population_size;
+    }
 }
 
 std::vector<Tour*> TourPopulationFactory::createPopulation() const {
@@ -52,7 +61,7 @@ std::vector<Tour*> TourPopulationFactory::createPopulation() const {
 
     //sort the tours in decreasing level of fitness
     ranges::sort(tours, [](const Tour*a, const Tour* b) {
-        return a->get_tour_fitness() < b->get_tour_fitness();
+        return a->get_tour_fitness() > b->get_tour_fitness();
     });
 
     delete t;
