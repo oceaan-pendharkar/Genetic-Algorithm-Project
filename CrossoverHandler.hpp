@@ -4,6 +4,7 @@
 #include "BasePopulationHandler.hpp"
 
 class CrossoverHandler : BasePopulationHandler {
+public:
     /*
         Creates two sets of "Parent" tours and crosses them to generate new tours
         :param population: a vector of candidate tours

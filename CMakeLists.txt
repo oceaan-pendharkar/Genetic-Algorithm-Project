@@ -21,4 +21,6 @@ add_executable(assignment2template
         MutationHandler.cpp
         MutationHandler.hpp
         EvaluationHandler.cpp
-        EvaluationHandler.hpp)
+        EvaluationHandler.hpp
+        GeneticSystem.cpp
+        GeneticSystem.hpp)

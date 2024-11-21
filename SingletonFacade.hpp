@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+#include "Tour.hpp"
+
 class SingletonFacade {
     /**
      * Private default constructor
@@ -32,4 +35,6 @@ public:
      * This function will manage the complexity of running our genetic algorithm.
      */
     static void run();
+
+    void print_iteration(std::vector<Tour*> & population, const int & iterations, const bool & new_elite_found);
 };

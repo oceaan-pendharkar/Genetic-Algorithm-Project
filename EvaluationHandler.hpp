@@ -4,6 +4,7 @@
 #include "BasePopulationHandler.hpp"
 
 class EvaluationHandler : BasePopulationHandler {
+public:
     /*
         Evaluates the mutated
         :return: a tuple where the first element is a string stating the
