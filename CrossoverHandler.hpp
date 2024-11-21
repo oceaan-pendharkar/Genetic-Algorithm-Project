@@ -3,7 +3,7 @@
 #include <string>
 #include "BasePopulationHandler.hpp"
 
-class CrossoverHandler : BasePopulationHandler {
+class CrossoverHandler : public BasePopulationHandler {
 public:
     /*
         Creates two sets of "Parent" tours and crosses them to generate new tours
@@ -14,21 +14,5 @@ public:
      */
     CrossoverHandler() = default;
 
-    std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) override {
-        std::cout << "Crossing population to make new tours" << std::endl;
-
-        // Handler logic
-        if () {
-
-            //if no more handlers exist, return with success message
-            if (!next_handler)
-                return std::make_pair("", true);
-
-            //else call next handler in sequence
-            return next_handler->handle_population(population);
-            }
-        else
-            //failed validation, return failure message
-                return std::make_pair("Unable to Crossover population", false);
-    }
+    std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) override;
 };

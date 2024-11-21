@@ -10,6 +10,7 @@ public:
 
     BasePopulationHandler() = default;
     BasePopulationHandler(BasePopulationHandler * handler) : next_handler(handler) {}
+    virtual ~BasePopulationHandler() = default;
 
     /*
         Each handler would have a specific implementation of how it
@@ -19,7 +20,7 @@ public:
         outcome and the reason, and the second a bool indicating
         successful handling of the form or not.
      */
-    virtual std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) {};
+    virtual std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) = 0;
 
     /*
         Each handler can invoke another handler at the end of it's

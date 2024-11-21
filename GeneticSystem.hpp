@@ -12,13 +12,20 @@ class GeneticSystem {
     MutationHandler * mutation_handler;
     EvaluationHandler * evaluation_handler;
 
+public:
     GeneticSystem() {
+        // Sets up Genetic System and creates a chain of handlers
         crossover_handler = new CrossoverHandler;
         mutation_handler = new MutationHandler;
         evaluation_handler = new EvaluationHandler;
+
+        // Sets Handler order
+        chain_head = crossover_handler;
+        crossover_handler->set_handler(mutation_handler);
+        mutation_handler->set_handler(evaluation_handler);
     }
 
-    bool iterate_next(std::vector<Tour*> * population, int & iterations);
+    bool iterate_next(std::vector<Tour*> & population);
 
     ~GeneticSystem() {
         delete crossover_handler;

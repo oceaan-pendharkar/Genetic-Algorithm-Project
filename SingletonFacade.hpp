@@ -3,6 +3,10 @@
 #include "Tour.hpp"
 
 class SingletonFacade {
+    static const int FIRST;
+    static const int ITERATIONS;
+    static const double IMPROVEMENT_FACTOR;
+
     /**
      * Private default constructor
      */
@@ -36,5 +40,6 @@ public:
      */
     static void run();
 
-    void print_iteration(std::vector<Tour*> & population, const int & iterations, const bool & new_elite_found);
+    static void print_iteration(std::vector<Tour*> & population, const int & iterations,
+    const bool & new_elite_found, const double & improvement_factor);
 };
