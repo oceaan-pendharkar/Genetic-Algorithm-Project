@@ -20,7 +20,7 @@ public:
         outcome and the reason, and the second a bool indicating
         successful handling of the form or not.
      */
-    virtual std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) = 0;
+    virtual std::pair<std::string,bool> handle_population(std::vector<Tour> * population) = 0;
 
     /*
         Each handler can invoke another handler at the end of it's

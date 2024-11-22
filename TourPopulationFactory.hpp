@@ -30,5 +30,5 @@ public:
      *
      * @return a population of tours sorted in increasing level of fitness, as a vector of pointers to tour
      */
-    std::vector<Tour*> createPopulation() const;
+    std::vector<Tour> createPopulation() const;
 };

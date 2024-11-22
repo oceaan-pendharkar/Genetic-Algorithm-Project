@@ -38,4 +38,6 @@ public:
      * @return the distance between the two cities
      */
     friend double get_distance_between_cities(const City * a, const City * b);
+
+    std::string get_name() { return name; }
 };

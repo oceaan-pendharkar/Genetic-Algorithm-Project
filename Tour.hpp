@@ -43,6 +43,8 @@ public:
   std::shuffle(std::begin(cities), std::end(cities), gen);
  }
 
+ void push_city(City * new_city) { cities.push_back(new_city); }
+
  /**
   * Get Cities: gets the cities
   * @return the vector of pointers to city within this tour
@@ -51,7 +53,7 @@ public:
 
  size_t get_number_of_cities() { return cities.size(); }
 
- void push_city(City * new_city) { cities.push_back(new_city); }
+ std::string get_city_name(int i) { return cities[i]->get_name(); }
 
  /**
   * Get Tour Distance

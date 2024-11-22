@@ -39,32 +39,51 @@ TourPopulationFactory::TourPopulationFactory() {
     }
 }
 
-std::vector<Tour*> TourPopulationFactory::createPopulation() const {
+std::vector<Tour> TourPopulationFactory::createPopulation() const {
+
+    const std::vector<std::string> canadian_cities = {
+        "Abbotsford", "Airdrie", "Ajax", "Amherstburg", "Aurora",
+        "Barrie", "Belleville", "Brampton", "Brantford", "Burlington",
+        "Calgary", "Cambridge", "Charlottetown", "Chilliwack", "Colwood",
+        "Dartmouth", "Delta", "Dieppe", "Drummondville", "Duncan",
+        "Edmonton", "Estevan", "Etobicoke", "Fredericton", "Fort McMurray",
+        "Gatineau", "Guelph", "Halifax", "Hamilton", "Kamloops",
+        "Kelowna", "Kingston", "Kitchener", "Langley", "Lethbridge",
+        "London", "Longueuil", "Markham", "Medicine Hat", "Mississauga",
+        "Moncton", "Montreal", "Nanaimo", "New Westminster", "Niagara Falls",
+        "North Bay", "North Vancouver", "Oakville", "Oshawa", "Ottawa",
+        "Peterborough", "Pickering", "Prince George", "Quebec City", "Red Deer",
+        "Regina", "Richmond", "Richmond Hill", "Saskatoon", "Sherbrooke",
+        "St. Albert", "St. Catharines", "St. John's", "Sudbury", "Surrey",
+        "Thunder Bay", "Toronto", "Trois-Rivieres", "Vancouver", "Victoria",
+        "Windsor", "Winnipeg", "Yellowknife", "Yorkton"
+    };
+
     vector<City*> cities;
-    int counter = 0;
+
     // create a list of cities with ids and randomly generated coordinates within our range
     for(int i=0; i<cities_in_tour; i++) {
-        string name = to_string(counter++);
         const double x = generate_coordinate();
         const double y = generate_coordinate();
+        string name = canadian_cities[i];
         cities.push_back(new City(x, y, name));
     }
 
-    const auto t = new Tour(cities);
+    const Tour t(cities);
+
     // create a list of tours based on this one tour that contains our cities
-    vector<Tour*> tours;
+    vector<Tour> tours;
     tours.reserve(population_size);
     for (int i=0; i<population_size; i++) {
         // our tour copy constructor shuffles the original order
-        tours.push_back(new Tour(*t));
+        tours.push_back(Tour(t));
     }
 
     //sort the tours in decreasing level of fitness
-    ranges::sort(tours, [](const Tour*a, const Tour* b) {
-        return a->get_tour_fitness() > b->get_tour_fitness();
+    ranges::sort(tours, [](const Tour a, const Tour b) {
+        return a.get_tour_fitness() > b.get_tour_fitness();
     });
 
-    delete t;
     return tours;
 }
 

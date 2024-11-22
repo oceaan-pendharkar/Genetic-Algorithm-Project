@@ -13,6 +13,6 @@ public:
      */
     EvaluationHandler() = default;
 
-    std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) override;
+    std::pair<std::string,bool> handle_population(std::vector<Tour> * population) override;
 
 };

@@ -5,30 +5,34 @@
 #include "TourPopulationFactory.hpp"
 
 constexpr int SingletonFacade::FIRST = 0;
-constexpr int SingletonFacade::ITERATIONS = 1000;
+constexpr int SingletonFacade::ITERATIONS = 2;
 constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 0.05;
 
 void SingletonFacade::run() {
     //initialize population
     const auto * factory = new TourPopulationFactory{};
-    const std::vector<Tour*> tours = factory->createPopulation();
+    const std::vector<Tour> tours = factory->createPopulation();
 
-    Tour * elite = tours[FIRST];
-    double const base_distance = elite->get_tour_distance();
+    Tour elite = tours[FIRST];
+    double const base_distance = elite.get_tour_distance();
     double best_distance = base_distance;
 
-    // for(const auto & tour : tours) {
-    //     std::cout << "distance: " << tour->get_tour_distance() << " | fitness: " << tour->get_tour_fitness() << std::endl;
-    // }
+    for(const auto & tour : tours) {
+         std::cout << "distance: " << tour.get_tour_distance() << " | fitness: " << tour.get_tour_fitness() << std::endl;
+    }
 
     // Print the original Elite data
-    std::cout << "Original Elite Distance: " << elite->get_tour_distance() << std::endl;
-    std::cout << "(TO DO: Print sequence of cities for original elite)" << std::endl;
+    std::cout << "Original Elite Distance: " << elite.get_tour_distance() << std::endl;
+    std::cout << "(";
+    for (int i = 0; i < elite.get_number_of_cities() - 1; i++) {
+        std::cout << elite.get_city_name(i) << "->";
+    }
+    std::cout << elite.get_city_name(elite.get_number_of_cities() - 1) << ")" << std::endl;
     std::cout << "--- STARTING ALGORITHM ---" << std::endl;
 
     // Sets up the variables for the Genetic Algorithm
     GeneticSystem genetic_system;
-    std::vector<Tour*> new_tours = tours;
+    std::vector<Tour> new_tours = tours;
     int iterations = 0;
     bool new_elite_found;
     double improvement_factor;
@@ -40,9 +44,9 @@ void SingletonFacade::run() {
          genetic_system.iterate_next(new_tours);
 
          // If new Elite is found, set the new values
-         if (tours[FIRST]->get_tour_distance() < best_distance) {
+         if (tours[FIRST].get_tour_distance() < best_distance) {
              new_elite_found = true;
-             best_distance = tours[FIRST]->get_tour_distance();
+             best_distance = tours[FIRST].get_tour_distance();
              improvement_factor = base_distance / best_distance;
          } else {
              new_elite_found = false;
@@ -52,19 +56,10 @@ void SingletonFacade::run() {
          print_iteration(new_tours, iterations, new_elite_found, improvement_factor);
      }
 
-    //delete all the cities: only needs to be done on one tour because all the tours point to the same set of cities
-    for (const auto & city : tours[FIRST]->get_cities()) {
-        delete city;
-    }
-    //delete all the pointers to tours
-    for (const auto & tour : tours) {
-        delete tour;
-    }
-
     delete factory;
 }
 
-void SingletonFacade::print_iteration(std::vector<Tour*> & population, const int & iterations,
+void SingletonFacade::print_iteration(std::vector<Tour> & population, const int & iterations,
     const bool & new_elite_found, const double & improvement_factor) {
     std::cout << "Iteration: " << iterations << std::endl;
 
@@ -72,10 +67,10 @@ void SingletonFacade::print_iteration(std::vector<Tour*> & population, const int
         std::cout << "NEW ELITE FOUND:" << std::endl;
     }
 
-    std::cout << "Distance: " << population[FIRST]->get_tour_distance() << std::endl;
+    std::cout << "Distance: " << population[FIRST].get_tour_distance() << std::endl;
 
     if (!new_elite_found) {
-        std::cout << "Best non-elite distance: " << population[FIRST]->get_tour_distance() << std::endl;
+        std::cout << "Best non-elite distance: " << population[FIRST].get_tour_distance() << std::endl;
     }
     std::cout << "Improvement over base: " << improvement_factor << std::endl << std::endl;
 }

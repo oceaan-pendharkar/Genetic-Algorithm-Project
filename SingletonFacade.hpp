@@ -40,6 +40,6 @@ public:
      */
     static void run();
 
-    static void print_iteration(std::vector<Tour*> & population, const int & iterations,
+    static void print_iteration(std::vector<Tour> & population, const int & iterations,
     const bool & new_elite_found, const double & improvement_factor);
 };

@@ -1,6 +1,6 @@
 #include "GeneticSystem.hpp"
 
-bool GeneticSystem::iterate_next(std::vector<Tour*> & population) {
+bool GeneticSystem::iterate_next(std::vector<Tour> & population) {
     std::pair<std::string, bool> result;
 
     // Calls the three handlers in a chain
