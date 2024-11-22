@@ -32,12 +32,10 @@ public:
  explicit Tour(const std::vector<City*> &cities):cities(cities) {}
 
  /**
-  * Copy constructor
-  * takes another tour and shuffles its city order to create a new tour
   *
   * @param t the tour to copy into this one
   */
- Tour(const Tour& t):Tour(t.cities) {
+ void shuffle_cities() {
   std::random_device rd;
   std::mt19937 gen(rd());
   std::shuffle(std::begin(cities), std::end(cities), gen);

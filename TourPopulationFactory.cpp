@@ -41,7 +41,8 @@ TourPopulationFactory::TourPopulationFactory() {
 
 std::vector<Tour> TourPopulationFactory::createPopulation() const {
 
-    const std::vector<std::string> canadian_cities = {
+    // Populate a list of city names and shuffle the list
+    std::vector<std::string> canadian_cities = {
         "Abbotsford", "Airdrie", "Ajax", "Amherstburg", "Aurora",
         "Barrie", "Belleville", "Brampton", "Brantford", "Burlington",
         "Calgary", "Cambridge", "Charlottetown", "Chilliwack", "Colwood",
@@ -58,6 +59,9 @@ std::vector<Tour> TourPopulationFactory::createPopulation() const {
         "Thunder Bay", "Toronto", "Trois-Rivieres", "Vancouver", "Victoria",
         "Windsor", "Winnipeg", "Yellowknife", "Yorkton"
     };
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(canadian_cities.begin(), canadian_cities.end(), g);
 
     vector<City*> cities;
 
@@ -69,18 +73,20 @@ std::vector<Tour> TourPopulationFactory::createPopulation() const {
         cities.push_back(new City(x, y, name));
     }
 
-    const Tour t(cities);
+    // Create a base tour
+    const Tour base_tour(cities);
 
     // create a list of tours based on this one tour that contains our cities
     vector<Tour> tours;
     tours.reserve(population_size);
     for (int i=0; i<population_size; i++) {
-        // our tour copy constructor shuffles the original order
-        tours.push_back(Tour(t));
+        Tour new_tour = base_tour;
+        new_tour.shuffle_cities();
+        tours.push_back(Tour(new_tour));
     }
 
     //sort the tours in decreasing level of fitness
-    ranges::sort(tours, [](const Tour a, const Tour b) {
+    std::sort(tours.begin(), tours.end(), [](const Tour& a, const Tour& b) {
         return a.get_tour_fitness() > b.get_tour_fitness();
     });
 
