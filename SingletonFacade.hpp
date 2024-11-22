@@ -4,6 +4,7 @@
 
 class SingletonFacade {
     static const int FIRST;
+    static const int ONE;
     static const int TWO;
     static const int SIX;
     static const int ITERATIONS;
