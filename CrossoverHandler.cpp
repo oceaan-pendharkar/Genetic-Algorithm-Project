@@ -8,22 +8,8 @@ const int CrossoverHandler::PARENT_POOL_SIZE = 5;
 
 std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tour> * population) {
 
-    // **Testing Block**
-    std::cout << "Elite Tour - Distance: " << (*population)[0].get_tour_distance()
-              << " | Fitness: " << (*population)[0].get_tour_fitness() << std::endl;
-    // **End Testing Block**
-
     // Add the current elite to crossover_population
     crossover_population.push_back(population->front());
-
-    // **Testing Block**
-    std::cout << "Test: Size of crossover_population after passing elite is: " << crossover_population.size() << std::endl;
-    for (const auto &tour : crossover_population) {
-        std::cout << "distance: " << tour.get_tour_distance()
-                  << " | fitness: " << tour.get_tour_fitness()
-                  << std::endl;
-    }
-    // **End Testing Block**
 
     //Set up number of loops required to fill new vector
     const std::size_t population_size = population->size();
@@ -33,25 +19,12 @@ std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tou
 
     //Crossover Algorithm
     while (crossover_population.size() < population_size) {
-
         generate_child(population, population_size);
-
     }
 
-    // **Testing Block**
-    std::cout << "Test: Size of crossover_population after creating children is: " << crossover_population.size() << std::endl;
-    for (const auto &tour : crossover_population) {
-        std::cout << "distance: " << tour.get_tour_distance()
-                  << " | fitness: " << tour.get_tour_fitness()
-                  << std::endl;
-    }
-    // **End Testing Block**
-
-    // Replace contents with temp vectorv
+    // Replace contents of population and clear crossover vector
     *population = crossover_population;
-
-    std::cout << "Test: At End of Crossover, size is population is: " << population->size() << std::endl;
-    std::cout << std::endl;
+    crossover_population.clear();
 
     //if no more handlers exist, return with success message
     if (!next_handler) {

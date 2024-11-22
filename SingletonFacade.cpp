@@ -1,11 +1,14 @@
 #include <iostream>
+#include <iomanip>
 
 #include "SingletonFacade.hpp"
 #include "GeneticSystem.hpp"
 #include "TourPopulationFactory.hpp"
 
 constexpr int SingletonFacade::FIRST = 0;
-constexpr int SingletonFacade::ITERATIONS = 2;
+constexpr int SingletonFacade::TWO = 2;
+constexpr int SingletonFacade::SIX = 6;
+constexpr int SingletonFacade::ITERATIONS = 1000;
 constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 0.05;
 
 void SingletonFacade::run() {
@@ -22,7 +25,7 @@ void SingletonFacade::run() {
     // }
 
     // Print the original Elite data
-    std::cout << "Original Elite Distance: " << elite.get_tour_distance() << std::endl;
+    std::cout << "\nOriginal Elite Distance: " << elite.get_tour_distance() << std::endl;
     std::cout << "(";
     for (int i = 0; i < elite.get_number_of_cities() - 1; i++) {
         std::cout << elite.get_city_name(i) << "->";
@@ -44,9 +47,9 @@ void SingletonFacade::run() {
          genetic_system.iterate_next(new_tours);
 
          // If new Elite is found, set the new values
-         if (tours[FIRST].get_tour_distance() < best_distance) {
+         if (new_tours[FIRST].get_tour_distance() < best_distance) {
              new_elite_found = true;
-             best_distance = tours[FIRST].get_tour_distance();
+             best_distance = new_tours[FIRST].get_tour_distance();
              improvement_factor = base_distance / best_distance;
          } else {
              new_elite_found = false;
@@ -67,10 +70,13 @@ void SingletonFacade::print_iteration(std::vector<Tour> & population, const int 
         std::cout << "NEW ELITE FOUND:" << std::endl;
     }
 
-    std::cout << "Distance: " << population[FIRST].get_tour_distance() << std::endl;
+    std::cout << "Distance: " << std::fixed << std::setprecision(TWO)
+        << population[FIRST].get_tour_distance() << std::endl;
 
     if (!new_elite_found) {
-        std::cout << "Best non-elite distance: " << population[FIRST].get_tour_distance() << std::endl;
+        std::cout << "Best non-elite distance: " << std::fixed << std::setprecision(TWO)
+            << population[FIRST].get_tour_distance() << std::endl;
     }
-    std::cout << "Improvement over base: " << improvement_factor << std::endl << std::endl;
+    std::cout << "Improvement over base: " << std::fixed << std::setprecision(SIX)
+        << improvement_factor << std::endl << std::endl;
 }
