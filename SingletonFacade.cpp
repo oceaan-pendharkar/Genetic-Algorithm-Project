@@ -10,7 +10,7 @@ constexpr int SingletonFacade::ONE = 1;
 constexpr int SingletonFacade::TWO = 2;
 constexpr int SingletonFacade::SIX = 6;
 constexpr int SingletonFacade::ITERATIONS = 1000;
-constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 0.05;
+constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 1.5;
 
 void SingletonFacade::run() {
     //initialize population
@@ -43,7 +43,7 @@ void SingletonFacade::run() {
     double improvement_factor;
 
      // while termination criteria not reached.
-     while(base_distance/best_distance > IMPROVEMENT_FACTOR && iterations < ITERATIONS) {
+     while(base_distance/best_distance < IMPROVEMENT_FACTOR && iterations < ITERATIONS) {
 
          // Run the latest set of tours through the Genetic System
          genetic_system.iterate_next(new_tours);
@@ -81,6 +81,13 @@ void SingletonFacade::run() {
         std::cout << final_elite.get_city_name(i) << "->";
     }
     std::cout << final_elite.get_city_name(final_elite.get_number_of_cities() - ONE) << ")" << std::endl;
+
+    if (base_distance/best_distance >= IMPROVEMENT_FACTOR) {
+        std::cout << std::endl;
+        std::cout << "Improvement factor reached!" << std::endl;
+        std::cout << "Improvement factor: " << std::fixed << std::setprecision(SIX) <<
+            improvement_factor << std::endl;
+    }
 
     delete factory;
 }
