@@ -28,6 +28,7 @@ public:
   * Initializes a shuffled order of the passed-in cities
   * @param cities the vector of cities in a tour
   */
+ Tour() {}
  explicit Tour(const std::vector<City*> &cities):cities(cities) {}
 
  /**

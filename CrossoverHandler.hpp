@@ -8,7 +8,8 @@ class CrossoverHandler : public BasePopulationHandler {
     static const int ONE;
     static const int TWO;
     static const int PARENT_POOL_SIZE;
-    static const int NUMBER_OF_PARENTS;
+
+    std::vector<Tour *> * crossover_population;
 
 public:
     /*
@@ -21,4 +22,6 @@ public:
     CrossoverHandler() = default;
 
     std::pair<std::string,bool> handle_population(std::vector<Tour*> * population) override;
+
+    void generate_child(std::vector<Tour *> * population, size_t size);
 };
