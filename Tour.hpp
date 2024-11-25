@@ -53,9 +53,9 @@ public:
 
  /**
   * Get number of cities: gets the number of cities
-  * @return the number of cities, a size_t
+  * @return the number of cities, an int
   */
- size_t get_number_of_cities() const { return cities.size(); }
+ int get_number_of_cities() const { return static_cast<int>(cities.size()); }
 
  /**
   * Get city name: gets the name of a city at a particular index

@@ -3,10 +3,6 @@
 #include "Tour.hpp"
 
 class SingletonFacade {
-    static const int FIRST;
-    static const int ONE;
-    static const int TWO;
-    static const int SIX;
     static const int ITERATIONS;
     static const double IMPROVEMENT_FACTOR;
 
@@ -42,7 +38,4 @@ public:
      * This function will manage the complexity of running our genetic algorithm.
      */
     static void run();
-
-    static void print_iteration(std::vector<Tour> & population, const int & iterations,
-    const bool & new_elite_found, const double & improvement_factor);
 };

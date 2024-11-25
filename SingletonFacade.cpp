@@ -5,13 +5,15 @@
 #include "GeneticSystem.hpp"
 #include "TourPopulationFactory.hpp"
 
-constexpr int SingletonFacade::FIRST = 0;
-constexpr int SingletonFacade::ONE = 1;
-constexpr int SingletonFacade::TWO = 2;
-constexpr int SingletonFacade::SIX = 6;
+constexpr int FIRST = 0;
+constexpr int ONE = 1;
+constexpr int TWO = 2;
+constexpr int SIX = 6;
 constexpr int SingletonFacade::ITERATIONS = 1000;
 constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 1.5;
 void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory);
+static void print_iteration(const std::vector<Tour> & population, const int & iterations,
+                            const bool & new_elite_found, const double & improvement_factor);
 
 void SingletonFacade::run() {
     //initialize population
@@ -27,14 +29,7 @@ void SingletonFacade::run() {
     // }
 
     // Print the original Elite data
-    std::cout << std::endl;
-    std::cout << "Original Elite Distance: " << base_elite.get_tour_distance() << std::endl;
-    std::cout << "(";
-    for (int i = 0; i < base_elite.get_number_of_cities() - ONE; i++) {
-        std::cout << base_elite.get_city_name(i) << "->";
-    }
-    std::cout << base_elite.get_city_name(base_elite.get_number_of_cities() - ONE) << ")" << std::endl;
-    std::cout << "--- STARTING ALGORITHM ---" << std::endl;
+
 
     // Sets up the variables for the Genetic Algorithm
     GeneticSystem genetic_system;
@@ -92,8 +87,8 @@ void SingletonFacade::run() {
     clean_up(new_tours[0].get_cities(), factory);
 }
 
-void SingletonFacade::print_iteration(std::vector<Tour> & population, const int & iterations,
-    const bool & new_elite_found, const double & improvement_factor) {
+void print_iteration(const std::vector<Tour> & population, const int & iterations,
+                     const bool & new_elite_found, const double & improvement_factor) {
     std::cout << "Iteration: " << iterations << std::endl;
 
     if (new_elite_found) {
@@ -109,6 +104,17 @@ void SingletonFacade::print_iteration(std::vector<Tour> & population, const int 
     }
     std::cout << "Improvement over base: " << std::fixed << std::setprecision(SIX)
         << improvement_factor << std::endl << std::endl;
+}
+
+void print_original_elite_data(Tour base_elite) {
+    std::cout << std::endl;
+    std::cout << "Original Elite Distance: " << base_elite.get_tour_distance() << std::endl;
+    std::cout << "(";
+    for (int i = 0; i < base_elite.get_number_of_cities() - ONE; i++) {
+        std::cout << base_elite.get_city_name(i) << "->";
+    }
+    std::cout << base_elite.get_city_name(base_elite.get_number_of_cities() - ONE) << ")" << std::endl;
+    std::cout << "--- STARTING ALGORITHM ---" << std::endl;
 }
 
 void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory) {
