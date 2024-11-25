@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include "city.hpp"
+#include "City.hpp"
 
 /**
  * A tour has a list of cities.
@@ -93,4 +93,12 @@ public:
   * @return true if the tour contains a city with the given name
   */
  bool contains_city_with_name(const std::string &name) const;
+
+ /**
+  * Swap Cities swaps the position of two cities in a tour.
+  *
+  * @param a an index of a city, an int
+  * @param b an index of another city, an int
+  */
+ void swap_cities(int a, int b);
 };

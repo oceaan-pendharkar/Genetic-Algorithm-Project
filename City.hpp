@@ -5,8 +5,6 @@
  * A city has x and y coordinates to indicate its position relative to other cities.
  */
 class City {
-    static const int TWO;
-
     /**
      * Coordinates: x  (longitude) and y (latitude)
      * x and y must be within the range [0, 1000] inclusive
@@ -39,5 +37,9 @@ public:
      */
     friend double get_distance_between_cities(const City * a, const City * b);
 
+    /**
+     * Get name: gets the name of a city
+     * @return the name of a city, a string
+     */
     std::string get_name() { return name; }
 };

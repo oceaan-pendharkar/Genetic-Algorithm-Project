@@ -29,7 +29,10 @@ void SingletonFacade::run() {
     print_original_elite_data(base_elite);
 
     // Sets up the variables for the Genetic Algorithm
-    GeneticSystem genetic_system;
+    int mutation_rate;
+    std::cout << "Enter your mutation rate (A2 suggests 15)" << std::endl;
+    std::cin >> mutation_rate;
+    const GeneticSystem genetic_system(mutation_rate);
     std::vector<Tour> new_tours = tours;
     int iterations = 0;
     bool new_elite_found;

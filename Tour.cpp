@@ -26,3 +26,8 @@ bool Tour::contains_city_with_name(const std::string& name) const {
     }
     return contains;
 }
+
+void Tour::swap_cities(int a, int b) {
+    std::swap(cities[a], cities[b]);
+}
+

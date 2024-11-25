@@ -13,10 +13,10 @@ class GeneticSystem {
     EvaluationHandler * evaluation_handler;
 
 public:
-    GeneticSystem() {
+    explicit GeneticSystem(int mutation_rate = 15) {
         // Sets up Genetic System and creates a chain of handlers
         crossover_handler = new CrossoverHandler;
-        mutation_handler = new MutationHandler;
+        mutation_handler = new MutationHandler(mutation_rate);
         evaluation_handler = new EvaluationHandler;
 
         // Sets Handler order
