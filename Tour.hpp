@@ -49,8 +49,17 @@ public:
   */
  std::vector<City*> get_cities() { return cities; }
 
+ /**
+  * Get number of cities: gets the number of cities
+  * @return the number of cities, a size_t
+  */
  size_t get_number_of_cities() { return cities.size(); }
 
+ /**
+  * Get city name: gets the name of a city at a particular index
+  * @param i the name of the city and the index given, a string
+  * @return
+  */
  std::string get_city_name(int i) { return cities[i]->get_name(); }
 
  /**
