@@ -7,7 +7,6 @@ const int CrossoverHandler::TWO = 2;
 const int CrossoverHandler::PARENT_POOL_SIZE = 5;
 
 std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tour> * population) {
-
     // Add the current elite to crossover_population
     crossover_population.push_back(population->front());
 
@@ -87,9 +86,19 @@ void CrossoverHandler::generate_child(std::vector<Tour> * population, size_t siz
         child.push_city(parent_one_cities[i]);
     }
     //Push cities from Parent Two up to the index
-    for (int i = cross_index; i < number_of_cities; i++) {
-        child.push_city(parent_two_cities[i]);
+    //we need to start from index 0 again to fill the child with all the cities parent 1 didn't populate
+    for (int i = 0; i < number_of_cities; i++) {
+        if (!child.contains_city_with_name(parent_two_cities[i]->get_name())) {
+            std::cout << "Child doesn't contain" << parent_two_cities[i]->get_name() << std::endl;
+            child.push_city(parent_two_cities[i]);
+        }
     }
+
+    std::cout << "Printing child" << std::endl;
+    for (int i = 0 ; i<child.get_number_of_cities(); i++) {
+        std::cout << child.get_cities()[i]->get_name() << std::endl;
+    }
+    std::cout << std::endl;
 
     //Push the newly created child onto crossover vector
     crossover_population.push_back(child);

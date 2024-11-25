@@ -62,7 +62,7 @@ public:
   * @param i the name of the city and the index given, a string
   * @return
   */
- std::string get_city_name(int i) { return cities[i]->get_name(); }
+ std::string get_city_name(const int i) const { return cities[i]->get_name(); }
 
  /**
   * Get Tour Distance
@@ -84,4 +84,13 @@ public:
   * @return the fitness/quality of the tour, a double
   */
  double get_tour_fitness() const;
+
+ /**
+  * Contains City with Name
+  * Determines if a tour already contains a city with a given name
+  *
+  * @param name the name of the city to check, a string
+  * @return true if the tour contains a city with the given name
+  */
+ bool contains_city_with_name(const std::string &name) const;
 };

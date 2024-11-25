@@ -14,6 +14,7 @@ constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 1.5;
 void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory);
 static void print_iteration(const std::vector<Tour> & population, const int & iterations,
                             const bool & new_elite_found, const double & improvement_factor);
+void print_original_elite_data(Tour base_elite);
 
 void SingletonFacade::run() {
     //initialize population
@@ -24,12 +25,8 @@ void SingletonFacade::run() {
     double const base_distance = base_elite.get_tour_distance();
     double best_distance = base_distance;
 
-    // for(const auto & tour : tours) {
-    //      std::cout << "distance: " << tour.get_tour_distance() << " | fitness: " << tour.get_tour_fitness() << std::endl;
-    // }
-
     // Print the original Elite data
-
+    print_original_elite_data(base_elite);
 
     // Sets up the variables for the Genetic Algorithm
     GeneticSystem genetic_system;

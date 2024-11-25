@@ -15,3 +15,14 @@ double Tour::get_tour_fitness() const {
     const double distance = get_tour_distance();
     return SCALAR/distance;
 }
+
+bool Tour::contains_city_with_name(const std::string& name) const {
+    bool contains = false;
+    for (int i=0; i<this->get_number_of_cities(); i++) {
+        if(this->get_city_name(i) == name) {
+            contains = true;
+            break;
+        }
+    }
+    return contains;
+}

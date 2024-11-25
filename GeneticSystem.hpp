@@ -25,7 +25,7 @@ public:
         mutation_handler->set_handler(evaluation_handler);
     }
 
-    bool iterate_next(std::vector<Tour> & population);
+    bool iterate_next(std::vector<Tour> & population) const;
 
     ~GeneticSystem() {
         delete crossover_handler;
