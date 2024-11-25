@@ -58,20 +58,10 @@ void CrossoverHandler::generate_child(std::vector<Tour> * population, size_t siz
         }
     }
 
-    //Obtain the number of cities visted
-    std::size_t size_cities = parent_one.get_number_of_cities();
-    if (size_cities > static_cast<std::size_t>(std::numeric_limits<int>::max())) {
-        throw std::overflow_error("size_cities is too large to fit in an int");
-    }
-    if (size_cities <= 1) {
-        throw std::logic_error("Not enough cities for crossover operation");
-    }
-    int number_of_cities = static_cast<int>(size_cities);
-
     //Pick a random index for crossing the next parent
     std::random_device rd;
     std::mt19937 generator(rd());
-    std::uniform_int_distribution<> distribution(ONE, number_of_cities - ONE);
+    std::uniform_int_distribution<> distribution(ONE, parent_one.get_number_of_cities() - ONE);
     int cross_index = distribution(generator);
 
     //Get the list of cities from both parents
@@ -87,18 +77,11 @@ void CrossoverHandler::generate_child(std::vector<Tour> * population, size_t siz
     }
     //Push cities from Parent Two up to the index
     //we need to start from index 0 again to fill the child with all the cities parent 1 didn't populate
-    for (int i = 0; i < number_of_cities; i++) {
+    for (int i = 0; i < parent_two.get_number_of_cities(); i++) {
         if (!child.contains_city_with_name(parent_two_cities[i]->get_name())) {
-            std::cout << "Child doesn't contain" << parent_two_cities[i]->get_name() << std::endl;
             child.push_city(parent_two_cities[i]);
         }
     }
-
-    std::cout << "Printing child" << std::endl;
-    for (int i = 0 ; i<child.get_number_of_cities(); i++) {
-        std::cout << child.get_cities()[i]->get_name() << std::endl;
-    }
-    std::cout << std::endl;
 
     //Push the newly created child onto crossover vector
     crossover_population.push_back(child);
