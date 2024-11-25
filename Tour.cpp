@@ -7,6 +7,7 @@ double Tour::get_tour_distance() const {
     for (size_t i=0; i<cities.size() - 1; i++) {
         total_distance += get_distance_between_cities(cities[i], cities[i+1]);
     }
+    total_distance += get_distance_between_cities(cities[cities.size()-1], cities[0]);
     return total_distance;
 }
 

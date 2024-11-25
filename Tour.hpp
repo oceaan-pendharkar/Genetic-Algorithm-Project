@@ -67,6 +67,7 @@ public:
   *
   * Gets the sum of all the distances between each city on the tour
   * (i.e. the total distance of the tour)
+  * This includes the distance from the last city back to the first city!
   *
   * @return the total tour distance, as a double
   */
