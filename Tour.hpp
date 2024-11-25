@@ -3,9 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-
 #include "city.hpp"
-
 
 /**
  * A tour has a list of cities.

@@ -25,12 +25,6 @@ double generate_coordinate() {
 }
 
 TourPopulationFactory::TourPopulationFactory() {
-    cout << "How many cities would you like to include in your population?" << endl;
-    cin >> this->cities_in_tour;
-    while (cities_in_tour < MINIMUM_SIZE) {
-        cout << "Please enter a number larger than 10" << endl;
-        cin >> this->cities_in_tour;
-    }
     cout << "How many cities should we visit?" << endl;
     cin >> this->population_size;
     while (population_size < MINIMUM_SIZE) {
