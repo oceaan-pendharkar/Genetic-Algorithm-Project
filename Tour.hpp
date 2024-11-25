@@ -39,6 +39,10 @@ public:
   std::shuffle(std::begin(cities), std::end(cities), gen);
  }
 
+ /**
+  * Push City: Adds a new City to our list of cities
+  * @param new_city the city to add to our list of cities
+  */
  void push_city(City * new_city) { cities.push_back(new_city); }
 
  /**
@@ -51,7 +55,7 @@ public:
   * Get number of cities: gets the number of cities
   * @return the number of cities, a size_t
   */
- size_t get_number_of_cities() { return cities.size(); }
+ size_t get_number_of_cities() const { return cities.size(); }
 
  /**
   * Get city name: gets the name of a city at a particular index

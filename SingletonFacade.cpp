@@ -11,6 +11,7 @@ constexpr int SingletonFacade::TWO = 2;
 constexpr int SingletonFacade::SIX = 6;
 constexpr int SingletonFacade::ITERATIONS = 1000;
 constexpr double SingletonFacade::IMPROVEMENT_FACTOR = 1.5;
+void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory);
 
 void SingletonFacade::run() {
     //initialize population
@@ -88,8 +89,7 @@ void SingletonFacade::run() {
         std::cout << "Improvement factor: " << std::fixed << std::setprecision(SIX) <<
             improvement_factor << std::endl;
     }
-
-    delete factory;
+    clean_up(new_tours[0].get_cities(), factory);
 }
 
 void SingletonFacade::print_iteration(std::vector<Tour> & population, const int & iterations,
@@ -109,4 +109,11 @@ void SingletonFacade::print_iteration(std::vector<Tour> & population, const int 
     }
     std::cout << "Improvement over base: " << std::fixed << std::setprecision(SIX)
         << improvement_factor << std::endl << std::endl;
+}
+
+void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory) {
+    for(auto & city : cities) {
+        delete city;
+    }
+    delete factory;
 }
