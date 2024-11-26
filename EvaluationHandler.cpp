@@ -1,6 +1,6 @@
 #include "EvaluationHandler.hpp"
 
-std::pair<std::string, bool> EvaluationHandler::handle_population(std::vector<Tour> *population) {
+bool EvaluationHandler::handle_population(std::vector<Tour> *population) {
 
     std::cout << "Evaluation handler reached" << std::endl;
 
@@ -14,7 +14,7 @@ std::pair<std::string, bool> EvaluationHandler::handle_population(std::vector<To
 
     //if no more handlers exist, return with success message
     if (!next_handler)
-        return std::make_pair("", true);
+        return true;
 
     //else call next handler in sequence
     return next_handler->handle_population(population);

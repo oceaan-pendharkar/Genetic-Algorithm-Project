@@ -34,6 +34,6 @@ public:
      * @return a pair of message and boolean to determine if there was an issue or if there are no more handlers in the
      * chain of responsibility
      */
-    std::pair<std::string,bool> handle_population(std::vector<Tour> * population) override;
+    bool handle_population(std::vector<Tour> *population) override;
 
 };

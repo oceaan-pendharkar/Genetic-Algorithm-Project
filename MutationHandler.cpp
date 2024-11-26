@@ -3,7 +3,7 @@
 constexpr int ONE = 1;
 constexpr int ONE_HUNDRED = 100;
 
-std::pair<std::string, bool> MutationHandler::handle_population(std::vector<Tour> *population) {
+bool MutationHandler::handle_population(std::vector<Tour> *population) {
     // for (const auto & i : *population) {
     //     for (int j=0; j<i.get_number_of_cities(); j++) {
     //         std::cout << i.get_city_name(j) << " ";
@@ -49,7 +49,7 @@ std::pair<std::string, bool> MutationHandler::handle_population(std::vector<Tour
 
     //if no more handlers exist, return with success message
     if (!next_handler) {
-        return std::make_pair("", true);
+        return true;
     }
 
     //else call next handler in sequence

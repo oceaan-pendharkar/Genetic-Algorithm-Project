@@ -2,9 +2,9 @@
 
 bool GeneticSystem::iterate_next(std::vector<Tour> & population) const {
     // Calls the three handlers in a chain
-    std::pair<std::string, bool> result = chain_head->handle_population(&population);
+    bool result = chain_head->handle_population(&population);
 
-    if(result.second == true) {
+    if(result == true) {
         return true;
     }
 

@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <string>
 #include "BasePopulationHandler.hpp"
 
 class CrossoverHandler : public BasePopulationHandler {
@@ -21,7 +20,7 @@ public:
      */
     CrossoverHandler() = default;
 
-    std::pair<std::string,bool> handle_population(std::vector<Tour> * population) override;
+    bool handle_population(std::vector<Tour> *population) override;
 
     void generate_child(std::vector<Tour> * population, size_t size);
 };

@@ -6,7 +6,7 @@ const int CrossoverHandler::ONE = 1;
 const int CrossoverHandler::TWO = 2;
 const int CrossoverHandler::PARENT_POOL_SIZE = 5;
 
-std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tour> * population) {
+bool CrossoverHandler::handle_population(std::vector<Tour> *population) {
     // Add the current elite to crossover_population
     crossover_population.push_back(population->front());
 
@@ -27,7 +27,7 @@ std::pair<std::string, bool> CrossoverHandler::handle_population(std::vector<Tou
 
     //if no more handlers exist, return with success message
     if (!next_handler) {
-        return std::make_pair("", true);
+        return true;
     }
 
     //else call next handler in sequence
