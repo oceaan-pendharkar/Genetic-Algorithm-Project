@@ -3,9 +3,6 @@
 #include "Tour.hpp"
 
 class SingletonFacade {
-    static const int ITERATIONS;
-    static const double IMPROVEMENT_FACTOR;
-
     /**
      * Private default constructor
      */

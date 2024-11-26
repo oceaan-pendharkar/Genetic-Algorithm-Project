@@ -4,6 +4,17 @@
 #include "EvaluationHandler.hpp"
 #include "MutationHandler.hpp"
 
+struct GeneticInfo {
+    Tour base_elite;
+    double base_distance{};
+    double best_distance{};
+    double improvement_factor{};
+    int iterations{0};
+    int mutation_rate{15};
+    std::vector<Tour> tours;
+    bool new_elite_found{};
+};
+
 class GeneticSystem {
 
     BasePopulationHandler * chain_head;
@@ -13,11 +24,11 @@ class GeneticSystem {
     EvaluationHandler * evaluation_handler;
 
 public:
-    explicit GeneticSystem(int mutation_rate = 15) {
+    explicit GeneticSystem(GeneticInfo * data) {
         // Sets up Genetic System and creates a chain of handlers
         crossover_handler = new CrossoverHandler;
-        mutation_handler = new MutationHandler(mutation_rate);
-        evaluation_handler = new EvaluationHandler;
+        mutation_handler = new MutationHandler(data->mutation_rate);
+        evaluation_handler = new EvaluationHandler(data);
 
         // Sets Handler order
         chain_head = crossover_handler;
