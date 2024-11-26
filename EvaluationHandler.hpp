@@ -7,9 +7,7 @@ class EvaluationHandler : public BasePopulationHandler {
 public:
     /*
         Evaluates the mutated
-        :return: a tuple where the first element is a string stating the
-        outcome and the reason, and the second a bool indicating
-        successful handling of the form or not.
+        :return: a bool indicating successful handling of the form or not.
      */
     EvaluationHandler() = default;
 
