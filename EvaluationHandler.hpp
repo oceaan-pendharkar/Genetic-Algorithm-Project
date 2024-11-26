@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
-#include <string>
 #include "BasePopulationHandler.hpp"
 
 class EvaluationHandler : public BasePopulationHandler {
 public:
-    /*
+    /**
         Evaluates the mutated
-        :return: a bool indicating successful handling of the form or not.
+        :return: a bool indicating successful handling of the population or not.
      */
     EvaluationHandler() = default;
 
