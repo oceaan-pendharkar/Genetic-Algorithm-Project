@@ -65,10 +65,10 @@ void print_original_elite_data(const Tour& base_elite) {
     std::cout << std::endl;
     std::cout << "Original Elite Distance: " << base_elite.get_tour_distance() << std::endl;
     std::cout << "(";
-    for (int i = 0; i < base_elite.get_number_of_cities() - ONE; i++) {
+    for (int i = 0; i < base_elite.get_number_of_cities(); i++) {
         std::cout << base_elite.get_city_name(i) << "->";
     }
-    std::cout << base_elite.get_city_name(base_elite.get_number_of_cities() - ONE) << ")" << std::endl;
+    std::cout << base_elite.get_city_name(0) << ")" << std::endl;
     std::cout << "--- STARTING ALGORITHM ---" << std::endl;
 }
 
@@ -76,10 +76,10 @@ void reprint_original_elite(const Tour& base_elite, double base_distance) {
     std::cout << "Original Elite:" << std::endl;
     std::cout << "Distance: " << std::fixed << std::setprecision(TWO) << base_distance << std::endl;
     std::cout << "(";
-    for (int i = 0; i < base_elite.get_number_of_cities() - ONE; i++) {
+    for (int i = 0; i < base_elite.get_number_of_cities(); i++) {
         std::cout << base_elite.get_city_name(i) << "->";
     }
-    std::cout << base_elite.get_city_name(base_elite.get_number_of_cities() - ONE) << ")" << std::endl;
+    std::cout << base_elite.get_city_name(0) << ")" << std::endl;
     std::cout << std::endl;
 }
 
@@ -87,10 +87,10 @@ void print_best_elite(const Tour& final_elite) {
     std::cout << "Best Elite:" << std::endl;
     std::cout << "Distance: " << std::fixed << std::setprecision(TWO) << final_elite.get_tour_distance() << std::endl;
     std::cout << "(";
-    for (int i = 0; i < final_elite.get_number_of_cities() - ONE; i++) {
+    for (int i = 0; i < final_elite.get_number_of_cities(); i++) {
         std::cout << final_elite.get_city_name(i) << "->";
     }
-    std::cout << final_elite.get_city_name(final_elite.get_number_of_cities() - ONE) << ")" << std::endl;
+    std::cout << final_elite.get_city_name(0) << ")" << std::endl;
 }
 
 void clean_up(const std::vector<City*>& cities, const TourPopulationFactory *factory) {

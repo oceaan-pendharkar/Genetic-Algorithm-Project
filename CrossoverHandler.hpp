@@ -2,6 +2,12 @@
 #include <iostream>
 #include "BasePopulationHandler.hpp"
 
+/**
+ * Crossover Handler
+ *
+ * Accepts a vector of tours and generates a new vector of tours
+ * by "crossing" randomly chosen "parent" tours to make new tours
+ */
 class CrossoverHandler : public BasePopulationHandler {
 
     static const int ONE;

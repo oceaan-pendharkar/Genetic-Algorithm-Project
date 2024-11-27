@@ -14,7 +14,6 @@ add_executable(assignment2template
         SingletonFacade.cpp
         TourPopulationFactory.hpp
         TourPopulationFactory.cpp
-        BasePopulationHandler.cpp
         BasePopulationHandler.hpp
         CrossoverHandler.cpp
         CrossoverHandler.hpp

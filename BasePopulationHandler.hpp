@@ -4,6 +4,11 @@
 
 #include "Tour.hpp"
 
+/**
+ * Base Population Handler
+ *
+ * Interface that sets up the Chain of Responsibility for Genetic System
+ */
 class BasePopulationHandler {
 public:
     BasePopulationHandler * next_handler = nullptr;
@@ -12,9 +17,9 @@ public:
     BasePopulationHandler(BasePopulationHandler * handler) : next_handler(handler) {}
     virtual ~BasePopulationHandler() = default;
 
-    /*
+    /**
         Each handler would have a specific implementation of how it
-        processes a form.
+        processes the vector of candidate tours
         :param population: a vector of candidate tours
         :return: a tuple where the first element is a string stating the
         outcome and the reason, and the second a bool indicating
@@ -22,9 +27,9 @@ public:
      */
     virtual bool handle_population(std::vector<Tour> *population) = 0;
 
-    /*
+    /**
         Each handler can invoke another handler at the end of it's
-        processing of the form. This handler needs to implement the
+        processing of the vector of candidate tours. This handler needs to implement the
         BasePopulationHandler interface.
         :param handler: a BasePopulationHandler
      */
