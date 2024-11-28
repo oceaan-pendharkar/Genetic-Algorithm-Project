@@ -24,7 +24,19 @@ public:
      */
     CrossoverHandler() = default;
 
+    /**
+     * Handle population handles the population at each node. Crosses two parents and generates child tours for the
+     * whole population.
+     *
+     * @param population the current population of tours
+     * @return the next handler or true if ran successfully, else false
+     */
     bool handle_population(std::vector<Tour> *population) override;
 
+    /**
+     * Generate child generates a child tour from two tour parents.
+     * @param population the current population of tours
+     * @param size the size of the tour
+     */
     void generate_child(std::vector<Tour> * population, size_t size);
 };

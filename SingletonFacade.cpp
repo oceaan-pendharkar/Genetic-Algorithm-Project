@@ -5,7 +5,6 @@
 #include "TourPopulationFactory.hpp"
 
 constexpr int FIRST = 0;
-constexpr int ONE = 1;
 constexpr int TWO = 2;
 constexpr int SIX = 6;
 constexpr int ITERATIONS = 1000;

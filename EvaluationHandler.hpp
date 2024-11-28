@@ -4,6 +4,9 @@
 
 struct GeneticInfo;
 
+/**
+ * Evaluation Handler is a handler in our GeneticSystem chain of command.
+ */
 class EvaluationHandler : public BasePopulationHandler {
     GeneticInfo * data{};
 public:

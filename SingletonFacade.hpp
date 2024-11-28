@@ -2,6 +2,9 @@
 #include <vector>
 #include "Tour.hpp"
 
+/**
+ * our SingletonFacade runs our Genetic Algorithm.
+ */
 class SingletonFacade {
     /**
      * Private default constructor

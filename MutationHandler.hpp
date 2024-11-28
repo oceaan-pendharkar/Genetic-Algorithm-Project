@@ -2,6 +2,9 @@
 #include <iostream>
 #include "BasePopulationHandler.hpp"
 
+/**
+ * Mutation Handler is a handler in our GeneticSystem chain of command.
+ */
 class MutationHandler : public BasePopulationHandler {
     int MUTATION_RATE{};
 public:
